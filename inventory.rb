@@ -1,5 +1,3 @@
-puts "Welcome to the Good Sir Beer Emporium!"
-
 def choice
 	puts "To get a list of the beers currently in inventory, type 'list'"
 	puts "To add a beer to the inventory, type 'add'"
@@ -58,18 +56,30 @@ def choice
 			puts "You've entered an invalid command"
 		end
 	end
-	puts response(user_action)
+	# call user's reponse method loop.
+	add_something_else(user_action)
 end
 
-puts choice
+# wrap user's response in a method
+def add_something_else(user_action)
 
-puts "Would you like to do something else? (y/n)"
-user_cont = gets.chomp
+	# call the response method
+	response(user_action)
 
-if user_cont == "y"
-	puts choice
-elsif user_cont == "n"
-	abort("Thank you for utilizing the Good Sir Beer Emporium inventory program. Goodbye!")
-else
-	abort("Sorry, didn't get that..... gotta run!")
+	# add an empty line to give some space in the text and make it visually appealing
+	puts ""
+	puts "Would you like to do something else? (y/n)"
+	user_cont = gets.chomp
+
+	if user_cont == "y"
+		puts choice
+	elsif user_cont == "n"
+		abort("Thank you for utilizing the Good Sir Beer Emporium inventory program. Goodbye!")
+	else
+		abort("Sorry, didn't get that..... gotta run!")
+	end
 end
+
+puts "Welcome to the Good Sir Beer Emporium!"
+# call the choice method to launch the prompts
+choice
